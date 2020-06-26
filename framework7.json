@@ -1,0 +1,26 @@
+{
+  "cwd": "/Users/gamanox-wtf/wtf/carl-donations-ws",
+  "type": [
+    "web"
+  ],
+  "name": "carl-donations",
+  "framework": "core",
+  "template": "single-view",
+  "bundler": "webpack",
+  "cssPreProcessor": "stylus",
+  "theming": {
+    "customColor": true,
+    "color": "#00b6ff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false,
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": true,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  }
+}

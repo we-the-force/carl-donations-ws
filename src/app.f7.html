@@ -1,0 +1,36 @@
+
+<template>
+  <div id="app">
+
+    <!-- Left panel with cover effect-->
+   
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main view-init safe-areas" data-url="/"></div>
+
+
+  </div>
+</template>
+<script>
+  export default {
+    
+    methods: {
+      helloWorld() {
+        this.$f7.dialog.alert('Hello World!');
+      },
+      updateUsername(e) {
+        this.username = e.target.value;
+        this.$update();
+      },
+      updatePassword(e) {
+        this.password = e.target.value;
+        this.$update();
+      },
+      alertLoginData() {
+        this.$f7.dialog.alert('Username: ' + this.username + '<br>Password: ' + this.password, () => {
+          this.$f7.loginScreen.close();
+        });
+      }
+    },
+  }
+</script>
