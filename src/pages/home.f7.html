@@ -148,19 +148,8 @@ export default {
             if(formData.name=='' || formData.email=='' || !validateEmail(formData.email) || formData.cel==''){
               app.dialog.alert('Datos incompletos! :(', 'Ooops!');
             } else {
-              // app.request.promise.postJSON('https://wetheforcestudios.com/api/public/carl-donations/custom/getpaymentlink/will@wetheforce.com?name=William%20Alvarez&phone=8441763270', 
-              // {
-              //   "nombre": "Nombre de Alguien",
-              //   "test": "test"
-              // }
-
-              // )
-              // .then(function (res) {
-
-              // })
-              // .catch((error) => {
-              //   console.error(error);
-              // });
+             
+              //AQUÍ PONEMOS LA FUNCIÓN DE COBRO
 
             }
 
@@ -173,19 +162,7 @@ export default {
         ev.preventDefault();
         popupInfo.open();
         
-        // app.request.promise.postJSON('https://wetheforcestudios.com/api/public/carl-donations/custom/getpaymentlink/will@wetheforce.com?name=William%20Alvarez&phone=8441763270', 
-        // {
-        //   "nombre": "Nombre de Alguien",
-        //   "test": "test"
-        // }
-       
-        // )
-        // .then(function (res) {
-          
-        // })
-        // .catch((error) => {
-        //   console.error(error);
-        // });
+        
       })
     }
   }
