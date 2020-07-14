@@ -24,36 +24,14 @@ var app = new Framework7({
   theme: 'auto', // Automatic theme detection
 
   data: {
+    stripeSK: 'sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA',
+    stripeTK: 'sk_test_4eC39HqLyjWDarjtT1zdp7dc',
+    stripeUrl: 'https://api.stripe.com/v1/checkout/sessions',
     api: 'https://wetheforcestudios.com/api/public/carl-donations'
   },
   methods: {
     
-    sessionGen: async () => {
-      const stripe = require('stripe')('sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA');
-      stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        line_items: [{
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Carl and the Plague',
-            },
-            unit_amount: 50,
-          },
-          quantity: 1,
-        }],
-        mode: 'payment',
-        success_url: 'https://wetheforcestudios.com/carlandtheplague/success/{CHECKOUT_SESSION_ID}',
-        cancel_url: 'https://wetheforcestudios.com/carlandtheplague/cancel',
-        },
-        function(err, session){
-          console.log(session);
-          return session.id;
-        }      
-      );
-
-//      return session.id;
-    },
+    
 
     serialGen: async () => {
       'use strict';
