@@ -9,10 +9,54 @@ import DynamicRoutePage from '../pages/dynamic-route.f7.html';
 import RequestAndLoad from '../pages/request-and-load.f7.html';
 import NotFoundPage from '../pages/404.f7.html';
 
+//const stripe = require('stripe')('sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA');
+
 var routes = [
+
   {
     path: '/',
-    component: HomePage,
+    async: function (routeTo, routeFrom, resolve, reject) {
+      var router = this;
+      // App instance
+      var app = router.app;
+      app.preloader.show();
+      var api = app.data.api;
+
+      /*const session = stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [{
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: 'Carl and the Plague',
+            },
+            unit_amount: 50,
+          },
+          quantity: 1,
+        }],
+        mode: 'payment',
+        success_url: 'https://wetheforcestudios.com/carlandtheplague/success/{CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://wetheforcestudios.com/carlandtheplague/cancel',
+      });
+*/
+
+      app.request.json(app.data.api+'/items/stripekeys/1', function (res) {
+        app.preloader.hide();
+          resolve(
+          // How and what to load: template
+            {
+              component: HomePage
+            },
+          // Custom template context
+            {
+              context: {
+                data: res.data,
+                //session: session.id
+              },
+            }
+          );
+      });
+    }
   },
   {
     path: '/about/',

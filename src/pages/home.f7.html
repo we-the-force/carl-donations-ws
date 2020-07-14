@@ -126,11 +126,15 @@
 <script>
   import $$ from 'dom7';
 
+
 export default {
   on: {
     pageMounted: function(e, page) {
       var self = this;
       var app = self.$app;
+      
+      console.log(page.route.context);
+
       function validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
@@ -150,9 +154,21 @@ export default {
             } else {
              
               //AQUÍ PONEMOS LA FUNCIÓN DE COBRO
+              var stripe = Stripe('pk_test_51H4VvJCjecf2D9fjyeO5ynlWl8RPy1cZqDEeHpYnXa4BARmvN6vTQL2Gk2b0Tv66nL5tieSrzkyXMwucTRPphFme008cls4GU7');
+                // Call stripe.redirectToCheckout() with the Session ID.
+                stripe.redirectToCheckout({
+                  // Make the id field from the Checkout Session creation API response
+                  // available to this file, so you can provide it as argument here
+                  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
 
+                  sessionId: app.sessionGen()
+                  
+                }).then(function (result) {
+                  // If `redirectToCheckout` fails due to a browser or network
+                  // error, display the localized error message to your customer
+                  // using `result.error.message`.
+                });
             }
-
             });
 
           }
