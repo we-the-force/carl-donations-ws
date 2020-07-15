@@ -12,16 +12,44 @@ import NotFoundPage from '../pages/404.f7.html';
 //const stripe = require('stripe')('sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA');
 
 var routes = [
- 
+ {
+   path: '/payment/:sessionId',
+   async: function (routeTo, routeFrom, resolve, reject) {
+    app.preloader.show();
+
+    var router = this;
+    var app = router.app;
+    var stripeurl = app.data.stripeUrl;
+    var sessionId = routeTo.params.sessionId;
+    app.request.json(stripeurl+'/'+sessionId, function (res) {
+      app.preloader.hide();
+        resolve(
+        // How and what to load: template
+          {
+            component: HomePage
+          },
+        // Custom template context
+          {
+            context: {
+              data: res.data,
+              //session: session.id
+            },
+          }
+        );
+    });
+   }
+ },
 
   {
     path: '/',
     async: function (routeTo, routeFrom, resolve, reject) {
+      app.preloader.show();
+
       var router = this;
       // App instance
       var app = router.app;
-      app.preloader.show();
       var api = app.data.api;
+
 
       /*const session = stripe.checkout.sessions.create({
         payment_method_types: ['card'],

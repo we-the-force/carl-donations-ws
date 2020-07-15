@@ -191,10 +191,10 @@ export default {
         ).then(function(res){
           var sessionData = JSON.parse(res.data);
           console.log(sessionData.id);
-          // stripe.redirectToCheckout({
+          stripe.redirectToCheckout({
         
-          //   sessionId: sessionData.id
-          // })
+            sessionId: sessionData.id
+          })
         })
         
         
