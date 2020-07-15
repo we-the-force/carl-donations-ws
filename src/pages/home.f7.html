@@ -154,7 +154,7 @@ export default {
               e.preventDefault();
             var formData = app.form.convertToData('#comprar-form');
             var emailValue = validateEmail(formData.email);
-            var nameValue = form.name;
+            var nameValue = formData.name;
             console.log(emailValue);
             // formData = JSON.stringify(formData);
             if(formData.name=='' || formData.email=='' || !validateEmail(formData.email) || formData.cel==''){
@@ -167,6 +167,7 @@ export default {
               {
                 success_url: 'https://carlpayment.netlify.app/#!/payment/{CHECKOUT_SESSION_ID}',
                 cancel_url: 'https://carlpayment.netlify.app/#!/payment/',
+                customer: nameValue,
                 customer_email: emailValue,
                 payment_method_types: ['card'],
                 line_items: [{
