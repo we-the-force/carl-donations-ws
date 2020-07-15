@@ -21,7 +21,9 @@ var routes = [
     app.preloader.show();
 
     var stripeurl = app.data.stripeUrl;
+    var paymenturl = app.data.paymentUrl;
     var sessionId = routeTo.params.sessionId;
+
     app.request.setup({
       headers: {
         'Authorization': 'Bearer '+app.data.stripeSK,
@@ -29,23 +31,40 @@ var routes = [
       }
     });
 
-    console.log(sessionId);
-    app.request.json(stripeurl+'/'+sessionId, function (res) {
-      app.preloader.hide();
-        resolve(
-        // How and what to load: template
+    app.request.json(stripeUrl+'/'+sessionId, function (res) {
+        app.preloader.hide();
+
+        console.log(res.session.payment_intent);
+        app.request.get(paymentUrl+'/'+res.session.payment_intent, function(paymentRes) {
+
+          console.log(paymentRes);
+          var paymentData = JSON.parse(paymentRes);
+
+          console.log("json " + paymentData);
+          
+          if(paymentData.charges.data[0].paid)
           {
-            component: HomePage
-          },
-        // Custom template context
-          {
-            context: {
-              session: res,
-              sessionResponse: sessionId
-              //session: session.id
-            },
+            var payment_email = paymentData.charges.data[0].billing_details.email;
+            var payment_client_name = paymentData.charges.data[0].billing_details.name;
+            var payment_client_id = paymentData.charges.data[0].customer;
+
+            console.log('email: ' +payment_email+ ' name ' + payment_client_name + ' id ' + payment_client_id);
           }
-        );
+          
+          resolve(
+            // How and what to load: template
+              {
+                component: HomePage
+              },
+            // Custom template context
+              {
+                context: {
+                  //session: session.id
+                },
+              }
+            );          
+
+        });
     });
    }
  },

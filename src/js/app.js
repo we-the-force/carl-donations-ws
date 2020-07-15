@@ -28,6 +28,7 @@ var app = new Framework7({
     stripePK: 'pk_test_51H4x5VCP0DsjUpGaLif7AFjALynzJW1WOqC2dOk4De92easSM9M8jyKXpupK8fiVJmozfkjUOlZNJIeJIhDC6JM0006gvLZr9n',
     stripeTK: 'sk_test_4eC39HqLyjWDarjtT1zdp7dc',
     stripeUrl: 'https://api.stripe.com/v1/checkout/sessions',
+    paymentUrl: 'https://api.stripe.com/v1/payment_intents',
     api: 'https://wetheforcestudios.com/api/public/carl-donations'
   },
   methods: {
