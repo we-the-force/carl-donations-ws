@@ -166,6 +166,7 @@ export default {
               {
                 success_url: 'https://carlpayment.netlify.app/#!/payment/{CHECKOUT_SESSION_ID}',
                 cancel_url: 'https://carlpayment.netlify.app/#!/payment/',
+                customer: formData.name,
                 customer_email: emailValue,
                 payment_method_types: ['card'],
                 line_items: [{
