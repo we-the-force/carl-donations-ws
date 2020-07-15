@@ -34,8 +34,11 @@ var routes = [
     app.request.json(stripeUrl+'/'+sessionId, function (res) {
         app.preloader.hide();
 
-        console.log(res.session.payment_intent);
-        app.request.get(paymentUrl+'/'+res.session.payment_intent, function(paymentRes) {
+        console.log(res);
+
+        console.log(res.payment_intent);
+
+        app.request.get(paymentUrl+'/'+res.payment_intent, function(paymentRes) {
 
           console.log(paymentRes);
           var paymentData = JSON.parse(paymentRes);
