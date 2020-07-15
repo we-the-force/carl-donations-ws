@@ -173,8 +173,8 @@ export default {
         // popupInfo.open();
         app.request.promise.post(stripeurl, 
         {
-          success_url: 'https://example.com/success',
-          cancel_url: 'https://example.com/cancel',
+          success_url: 'https://carlpayment.netlify.app/payment/',
+          cancel_url: 'https://carlpayment.netlify.app/payment/',
           payment_method_types: ['card'],
           line_items: [{
             price_data: {
@@ -190,13 +190,11 @@ export default {
         }
         ).then(function(res){
           var sessionData = JSON.parse(res.data);
-          console.log(sessionData);
-          stripe.redirectToCheckout({
-            // Make the id field from the Checkout Session creation API response
-            // available to this file, so you can provide it as argument here
-            // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-            sessionId: sessionData.id
-          })
+          console.log(sessionData.id);
+          // stripe.redirectToCheckout({
+        
+          //   sessionId: sessionData.id
+          // })
         })
         
         

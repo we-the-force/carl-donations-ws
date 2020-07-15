@@ -12,6 +12,7 @@ import NotFoundPage from '../pages/404.f7.html';
 //const stripe = require('stripe')('sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA');
 
 var routes = [
+ 
 
   {
     path: '/',
