@@ -24,10 +24,11 @@ var routes = [
     var sessionId = routeTo.params.sessionId;
     app.request.setup({
       headers: {
-        'Authorization': 'Bearer '+app.data.stripeTK,
+        'Authorization': 'Bearer '+app.data.stripeSK,
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
+
     console.log(sessionId);
     app.request.json(stripeurl+'/'+sessionId, function (res) {
       app.preloader.hide();
@@ -40,6 +41,7 @@ var routes = [
           {
             context: {
               session: res,
+              sessionResponse: sessionId
               //session: session.id
             },
           }

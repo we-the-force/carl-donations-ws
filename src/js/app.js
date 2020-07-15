@@ -24,7 +24,8 @@ var app = new Framework7({
   theme: 'auto', // Automatic theme detection
 
   data: {
-    stripeSK: 'sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA',
+    stripeSK: 'sk_test_51H4x5VCP0DsjUpGaTlCjtB6jw6QVT6kuMkU4jtZRxDtHQfRJsNK0xHqduvqREY3NSXniQAFNU3Y8PsG1157BxgFW00iLWqJc6d',
+    stripePK: 'pk_test_51H4x5VCP0DsjUpGaLif7AFjALynzJW1WOqC2dOk4De92easSM9M8jyKXpupK8fiVJmozfkjUOlZNJIeJIhDC6JM0006gvLZr9n',
     stripeTK: 'sk_test_4eC39HqLyjWDarjtT1zdp7dc',
     stripeUrl: 'https://api.stripe.com/v1/checkout/sessions',
     api: 'https://wetheforcestudios.com/api/public/carl-donations'

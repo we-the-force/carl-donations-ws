@@ -130,12 +130,12 @@
 export default {
   on: {
     pageMounted: function(e, page) {
-      var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
       var self = this;
       var app = self.$app;
+      var stripe = Stripe(app.data.stripePK);
       app.request.setup({
         headers: {
-          'Authorization': 'Bearer '+app.data.stripeTK,
+          'Authorization': 'Bearer '+app.data.stripeSK,
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
