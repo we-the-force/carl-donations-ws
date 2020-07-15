@@ -15,10 +15,11 @@ var routes = [
  {
    path: '/payment/:sessionId',
    async: function (routeTo, routeFrom, resolve, reject) {
-    app.preloader.show();
 
     var router = this;
     var app = router.app;
+    app.preloader.show();
+
     var stripeurl = app.data.stripeUrl;
     var sessionId = routeTo.params.sessionId;
     app.request.json(stripeurl+'/'+sessionId, function (res) {
@@ -43,11 +44,12 @@ var routes = [
   {
     path: '/',
     async: function (routeTo, routeFrom, resolve, reject) {
-      app.preloader.show();
 
       var router = this;
       // App instance
       var app = router.app;
+      app.preloader.show();
+
       var api = app.data.api;
 
 
