@@ -161,6 +161,34 @@ export default {
             } else {
              
               //AQUÍ PONEMOS LA FUNCIÓN DE COBRO
+
+              app.request.promise.post(stripeurl, 
+              {
+                success_url: 'https://carlpayment.netlify.app/#!/payment/{CHECKOUT_SESSION_ID}',
+                cancel_url: 'https://carlpayment.netlify.app/#!/payment/',
+                customer_email: emailValue,
+                payment_method_types: ['card'],
+                line_items: [{
+                  price_data: {
+                    currency: 'mxn',
+                    product_data: {
+                      name: 'CARL AND THE PLAGUE',
+                    },
+                    unit_amount: 5000,
+                  },
+                  quantity: 1,
+                }],
+                mode: 'payment',
+              }
+              ).then(function(res){
+                var sessionData = JSON.parse(res.data);
+                console.log(sessionData.id);
+                stripe.redirectToCheckout({
+              
+                  sessionId: sessionData.id
+                })
+              })
+
              
             }
             });
@@ -170,8 +198,8 @@ export default {
       });
       $$('#comprar').on('click', function(ev){
         ev.preventDefault();
-        // popupInfo.open();
-        app.request.promise.post(stripeurl, 
+        popupInfo.open();
+        /*app.request.promise.post(stripeurl, 
         {
           success_url: 'https://carlpayment.netlify.app/#!/payment/{CHECKOUT_SESSION_ID}',
           cancel_url: 'https://carlpayment.netlify.app/#!/payment/',
@@ -196,6 +224,7 @@ export default {
             sessionId: sessionData.id
           })
         })
+        */
         
         
       })
