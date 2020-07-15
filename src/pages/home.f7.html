@@ -173,8 +173,8 @@ export default {
         // popupInfo.open();
         app.request.promise.post(stripeurl, 
         {
-          success_url: 'https://carlpayment.netlify.app/payment/{CHECKOUT_SESSION_ID}',
-          cancel_url: 'https://carlpayment.netlify.app/payment/',
+          success_url: 'https://carlpayment.netlify.app/#!/payment/{CHECKOUT_SESSION_ID}',
+          cancel_url: 'https://carlpayment.netlify.app/#!/payment/',
           payment_method_types: ['card'],
           line_items: [{
             price_data: {

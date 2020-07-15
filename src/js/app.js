@@ -57,8 +57,8 @@ var app = new Framework7({
   },
   view: {
       pushState: true,
-      pushStateRoot: 'https://carlpayment.netlify.app/',
-      pushStateSeparator: ''
+      // pushStateRoot: 'https://carlpayment.netlify.app/',
+      // pushStateSeparator: ''
   },
 
 

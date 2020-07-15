@@ -22,6 +22,7 @@ var routes = [
 
     var stripeurl = app.data.stripeUrl;
     var sessionId = routeTo.params.sessionId;
+    console.log(sessionId);
     app.request.json(stripeurl+'/'+sessionId, function (res) {
       app.preloader.hide();
         resolve(
@@ -32,7 +33,7 @@ var routes = [
         // Custom template context
           {
             context: {
-              data: res.data,
+              session: res,
               //session: session.id
             },
           }
