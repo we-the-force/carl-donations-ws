@@ -22,6 +22,12 @@ var routes = [
 
     var stripeurl = app.data.stripeUrl;
     var sessionId = routeTo.params.sessionId;
+    app.request.setup({
+      headers: {
+        'Authorization': 'Bearer '+app.data.stripeTK,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
     console.log(sessionId);
     app.request.json(stripeurl+'/'+sessionId, function (res) {
       app.preloader.hide();
