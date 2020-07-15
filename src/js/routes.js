@@ -20,8 +20,8 @@ var routes = [
     var app = router.app;
     app.preloader.show();
 
-    var stripeurl = app.data.stripeUrl;
-    var paymenturl = app.data.paymentUrl;
+    var stripeUrl = app.data.stripeUrl;
+    var paymentUrl = app.data.paymentUrl;
     var sessionId = routeTo.params.sessionId;
 
     app.request.setup({
@@ -50,7 +50,7 @@ var routes = [
 
             console.log('email: ' +payment_email+ ' name ' + payment_client_name + ' id ' + payment_client_id);
           }
-          
+
           resolve(
             // How and what to load: template
               {
