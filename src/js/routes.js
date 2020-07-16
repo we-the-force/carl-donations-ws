@@ -61,7 +61,7 @@ var routes = [
               gateway_id: payment_intent
             });
 
-            app.request.post(app.data.api+'/items/payments/', paymentData, function(dbPaymentResponse) {
+            app.request.post(app.data.api+'/items/payments', paymentData, function(dbPaymentResponse) {
               console.log(dbPaymentResponse);
               var payment_newId = dbPaymentResponse.data[0].id;
               //--- TEMPORALMENTE UTILZIARE EL TIME AL ESTILO UNIX PARA GENERAL UN SERIAL UNICO
@@ -73,7 +73,7 @@ var routes = [
                 serial: serial_licence
               });
 
-              app.request.post(app.data.api+'/items/licences/', licenceData, function(dbLicenceResponse) {
+              app.request.post(app.data.api+'/items/licences', licenceData, function(dbLicenceResponse) {
                 //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
                 console.log(dbLicenceResponse);
                 var licence_newId = dbLicenceResponse.data[0].id;
@@ -83,7 +83,7 @@ var routes = [
                   payment: payment_newId,
                   licence: licence_newId
                 });
-                app.request.post(app.data.api+'/items/clients/', clientData, function(dbClientResponse){
+                app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
                   console.log(dbClientResponse);
                 });
               });
