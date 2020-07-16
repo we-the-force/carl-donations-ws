@@ -48,6 +48,8 @@ var routes = [
 
           console.log("json " + paymentData);
           
+
+/*
           if(paymentData.charges.data[0].paid)
           {
             var payment_email = paymentData.charges.data[0].billing_details.email;
@@ -60,7 +62,6 @@ var routes = [
               status: 'confirmed',
               gateway_id: payment_intent
             });
-
 
             console.log('payment data ' + paymentData);
             app.request.post(app.data.api+'/items/payments', JSON.stringify({status: 'confirmed', gateway_id: payment_intent}), 
@@ -94,7 +95,7 @@ var routes = [
                 });
               });
             });
-          }
+          }*/
 
           resolve(
             // How and what to load: template
