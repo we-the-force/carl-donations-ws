@@ -61,6 +61,8 @@ var routes = [
               gateway_id: payment_intent
             });
 
+            console.log('payment data ' + paymentData);
+
             app.request.post(app.data.api+'/items/payments', paymentData, function(dbPaymentResponse) {
               console.log(dbPaymentResponse);
               var payment_newId = dbPaymentResponse.data[0].id;
