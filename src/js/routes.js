@@ -63,7 +63,8 @@ var routes = [
 
 
             console.log('payment data ' + paymentData);
-            app.request.post(app.data.api+'/items/payments', paymentData, function(error, dbPaymentResponse, body) {
+            app.request.post(app.data.api+'/items/payments', JSON.stringify({status: 'confirmed', gateway_id: payment_intent}), 
+            function(error, dbPaymentResponse, body) {
               console.log(error);
               console.log(dbPaymentResponse);
               console.log(body);
