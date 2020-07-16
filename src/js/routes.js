@@ -55,17 +55,14 @@ var routes = [
 
             console.log('email: ' +payment_email+ ' name ' + payment_client_name + ' id ' + payment_client_id);
             //--- Aqui ya tiene la info necesaria para dar de alta la informacion en la base de datos
-
-
-            //status: 'confirmed',
-
             var paymentData = JSON.stringify({
+              status: 'confirmed',
               gateway_id: payment_intent
             });
 
             console.log('payment data ' + paymentData);
 
-            app.request.post(app.data.api+'/items/payments', paymentData, function(error, dbPaymentResponse, body) {
+            app.request.post(app.data.api+'/items/payments', {paymentData}, function(error, dbPaymentResponse, body) {
               console.log(error);
 
               console.log(dbPaymentResponse);
