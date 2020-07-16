@@ -63,23 +63,7 @@ var routes = [
 
 
             console.log('payment data ' + paymentData);
-
-            var options = {
-              uri: app.data.api+'/items/payments',
-              method: 'POST',
-              json: paymentData
-            };
-            
-            console.log(options);
-
-            app.request(options, function (error, dbPaymentResponse, body) {
-              //if (!error && response.statusCode == 200) {
-                console.log(body.id) // Print the shortened url.
-              //}
-            //});
-
-
-           //app.request.post(app.data.api+'/items/payments', paymentData, function(error, dbPaymentResponse, body) {
+            app.request.post(app.data.api+'/items/payments', paymentData, function(error, dbPaymentResponse, body) {
               console.log(error);
               console.log(dbPaymentResponse);
               console.log(body);
@@ -212,8 +196,8 @@ var routes = [
           console.log('no');
         }
         console.log(res.data);
-        console.log('intento 1.00');
-        
+        console.log('intento 1.01');
+
       app.preloader.hide();
 
         resolve(
