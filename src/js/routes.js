@@ -13,12 +13,15 @@ import NotFoundPage from '../pages/404.f7.html';
 
 var routes = [
  {
+
    path: '/payment/:sessionId',
    async: function (routeTo, routeFrom, resolve, reject) {
 
     var router = this;
     var app = router.app;
     app.preloader.show();
+
+    console.log('intento 1.00');
 
     var stripeUrl = app.data.stripeUrl;
     var paymentUrl = app.data.paymentUrl;
@@ -69,6 +72,8 @@ var routes = [
               json: paymentData
             };
             
+            console.log(options);
+
             app.request(options, function (error, dbPaymentResponse, body) {
               //if (!error && response.statusCode == 200) {
                 console.log(body.id) // Print the shortened url.
