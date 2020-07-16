@@ -60,12 +60,27 @@ var routes = [
               gateway_id: payment_intent
             });
 
+
             console.log('payment data ' + paymentData);
 
-            app.request.post(app.data.api+'/items/payments', {paymentData}, function(error, dbPaymentResponse, body) {
-              console.log(error);
+            var options = {
+              uri: app.data.api+'/items/payments',
+              method: 'POST',
+              json: paymentData
+            };
+            
+            app.request(options, function (error, dbPaymentResponse, body) {
+              //if (!error && response.statusCode == 200) {
+                console.log(body.id) // Print the shortened url.
+              //}
+            //});
 
+
+           //app.request.post(app.data.api+'/items/payments', paymentData, function(error, dbPaymentResponse, body) {
+              console.log(error);
               console.log(dbPaymentResponse);
+              console.log(body);
+
               var payment_newId = dbPaymentResponse.data[0].id;
               //--- TEMPORALMENTE UTILZIARE EL TIME AL ESTILO UNIX PARA GENERAL UN SERIAL UNICO
               var serial_licence = Math.floor(new Date() / 1000);
