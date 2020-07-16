@@ -133,15 +133,15 @@ export default {
       var self = this;
       var app = self.$app;
       var stripe = Stripe(app.data.stripePK);
-      app.request.setup({
+      /*app.request.setup({
         headers: {
           'Authorization': 'Bearer '+app.data.stripeSK,
           'Content-Type': 'application/x-www-form-urlencoded'
         }
-      });
+      });*/
       var stripeurl = app.data.stripeUrl;
       console.log(page.route.context);
-      console.log('intento 1.03');
+      console.log('intento 1.04');
 
 
       app.request.post(app.data.api+'/items/payments', JSON.stringify({status: 'confirmed', gateway_id: 'pi_1H5fnaCP0DsjUpGaoq2tkghK'}), 
