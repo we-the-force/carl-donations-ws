@@ -38,7 +38,9 @@ var routes = [
 
         console.log(res.payment_intent);
 
-        app.request.get(paymentUrl+'/'+res.payment_intent, function(paymentRes) {
+        var payment_intent = res.payment_intent;
+
+        app.request.get(paymentUrl+'/'+payment_intent, function(paymentRes) {
 
           console.log(paymentRes);
           var paymentData = JSON.parse(paymentRes);
@@ -52,6 +54,40 @@ var routes = [
             var payment_client_id = paymentData.charges.data[0].customer;
 
             console.log('email: ' +payment_email+ ' name ' + payment_client_name + ' id ' + payment_client_id);
+            //--- Aqui ya tiene la info necesaria para dar de alta la informacion en la base de datos
+
+            var paymentData = JSON.stringify({
+              status: 'confirmed',
+              gateway_id: payment_intent
+            });
+
+            app.request.post(app.data.api+'/items/payments/', paymentData, function(dbPaymentResponse) {
+              console.log(dbPaymentResponse);
+              var payment_newId = dbPaymentResponse.data[0].id;
+              //--- TEMPORALMENTE UTILZIARE EL TIME AL ESTILO UNIX PARA GENERAL UN SERIAL UNICO
+              var serial_licence = Math.floor(new Date() / 1000);
+              console.log('Serial_Licence: ' + serial_licence);
+
+              var licenceData = JSON.stringify({
+                active: true,
+                serial: serial_licence
+              });
+
+              app.request.post(app.data.api+'/items/licences/', licenceData, function(dbLicenceResponse) {
+                //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
+                console.log(dbLicenceResponse);
+                var licence_newId = dbLicenceResponse.data[0].id;
+
+                var clientData = JSON.stringify({
+                  email: payment_email,
+                  payment: payment_newId,
+                  licence: licence_newId
+                });
+                app.request.post(app.data.api+'/items/clients/', clientData, function(dbClientResponse){
+                  console.log(dbClientResponse);
+                });
+              });
+            });
           }
 
           resolve(
