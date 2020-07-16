@@ -21,8 +21,6 @@ var routes = [
     var app = router.app;
     app.preloader.show();
 
-    console.log('intento 1.00');
-
     var stripeUrl = app.data.stripeUrl;
     var paymentUrl = app.data.paymentUrl;
     var sessionId = routeTo.params.sessionId;

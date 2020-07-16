@@ -130,6 +130,8 @@
 export default {
   on: {
     pageMounted: function(e, page) {
+      console.log('intento 1.00');
+
       var self = this;
       var app = self.$app;
       var stripe = Stripe(app.data.stripePK);
