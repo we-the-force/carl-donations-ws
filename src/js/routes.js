@@ -57,6 +57,8 @@ var routes = [
             //--- Aqui ya tiene la info necesaria para dar de alta la informacion en la base de datos
 
             var paymentData = JSON.stringify({
+              created_on: Date(),
+              modified_on: Date(),
               status: 'confirmed',
               gateway_id: payment_intent
             });
