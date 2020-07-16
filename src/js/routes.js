@@ -196,8 +196,6 @@ var routes = [
           console.log('no');
         }
         console.log(res.data);
-        console.log('intento 1.01');
-
       app.preloader.hide();
 
         resolve(
