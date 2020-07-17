@@ -65,7 +65,7 @@ var routes = [
             function(dbPaymentResponse) {
               //console.log(error);
               //console.log('body: ' + body);
-              dbPaymentResponse = JSON.stringify(dbPaymentResponse);
+              dbPaymentResponse = JSON.parse(dbPaymentResponse);
               console.log('response: '+ dbPaymentResponse);
 
               var payment_newId = dbPaymentResponse.data[0].id;
