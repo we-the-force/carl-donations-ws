@@ -62,10 +62,10 @@ var routes = [
             };
 
             app.request.post(app.data.api+'/items/payments', paymentData, 
-            function(error, dbPaymentResponse, body) {
+            function(dbPaymentResponse) {
               //console.log(error);
               console.log('response: '+ dbPaymentResponse);
-              console.log('body: ' + body);
+              //console.log('body: ' + body);
 
               var payment_newId = dbPaymentResponse.data[0].id;
               //--- TEMPORALMENTE UTILZIARE EL TIME AL ESTILO UNIX PARA GENERAL UN SERIAL UNICO
