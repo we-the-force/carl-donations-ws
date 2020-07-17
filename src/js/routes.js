@@ -70,24 +70,24 @@ var routes = [
 
               var payment_newId = dbPaymentResponse.data.id;
               //--- TEMPORALMENTE UTILZIARE EL TIME AL ESTILO UNIX PARA GENERAL UN SERIAL UNICO
-              var serial_licence = Math.floor(new Date() / 1000);
-              console.log('Serial_Licence: ' + serial_licence);
+              var serial_license = Math.floor(new Date() / 1000);
+              console.log('Serial_Licence: ' + serial_license);
 
-              var licenceData = {
+              var licenseData = {
                 active: true,
-                serial: serial_licence
+                serial: serial_license
               };
 
-              app.request.post(app.data.api+'/items/licences', licenceData, function(dbLicenceResponse) {
+              app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
                 //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
-                dbLicenceResponse = JSON.parse(dbLicenceResponse);
-                console.log(dbLicenceResponse);
-                var licence_newId = dbLicenceResponse.data.id;
+                dbLicenseResponse = JSON.parse(dbLisenceResponse);
+                console.log(dbLicenseResponse);
+                var license_newId = dbLicenseResponse.data.id;
 
                 var clientData = {
                   email: payment_email,
                   payment: payment_newId,
-                  licence: licence_newId
+                  license: license_newId
                 };
                 app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
                   dbClientResponse = JSON.parse(dbClientRepsonse);
