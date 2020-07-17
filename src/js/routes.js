@@ -42,29 +42,21 @@ var routes = [
         var payment_intent = res.payment_intent;
 
         app.request.get(paymentUrl+'/'+payment_intent, function(paymentRes) {
-
-          console.log(paymentRes);
           var paymentData = JSON.parse(paymentRes);
-
-          console.log("json " + paymentData);
           
           if(paymentData.charges.data[0].paid)
           {
             var payment_email = paymentData.charges.data[0].billing_details.email;
-            var payment_client_name = paymentData.charges.data[0].billing_details.name;
-            var payment_client_id = paymentData.charges.data[0].customer;
+            //var payment_client_name = paymentData.charges.data[0].billing_details.name;
+            //var payment_client_id = paymentData.charges.data[0].customer;
 
-            console.log('email: ' +payment_email+ ' name ' + payment_client_name + ' id ' + payment_client_id);
             //--- Aqui ya tiene la info necesaria para dar de alta la informacion en la base de datos
             var paymentData = {
               status: 'confirmed',
               gateway_id: payment_intent
             };
 
-            app.request.post(app.data.api+'/items/payments', paymentData, 
-            function(dbPaymentResponse) {
-              //console.log(error);
-              //console.log('body: ' + body);
+            app.request.post(app.data.api+'/items/payments', paymentData, function(dbPaymentResponse) {
               dbPaymentResponse = JSON.parse(dbPaymentResponse);
               console.log(dbPaymentResponse);
 
@@ -75,8 +67,7 @@ var routes = [
 
               var licenseData = {
                 active: 1,
-                serial: serial_license,
-                owner: clientId
+                serial: serial_license
               };
 
               app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
