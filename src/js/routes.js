@@ -66,9 +66,9 @@ var routes = [
               //console.log(error);
               //console.log('body: ' + body);
               dbPaymentResponse = JSON.parse(dbPaymentResponse);
-              console.log('response: '+ dbPaymentResponse);
+              console.log(dbPaymentResponse);
 
-              var payment_newId = dbPaymentResponse.data[0].id;
+              var payment_newId = dbPaymentResponse.data.id;
               //--- TEMPORALMENTE UTILZIARE EL TIME AL ESTILO UNIX PARA GENERAL UN SERIAL UNICO
               var serial_licence = Math.floor(new Date() / 1000);
               console.log('Serial_Licence: ' + serial_licence);
