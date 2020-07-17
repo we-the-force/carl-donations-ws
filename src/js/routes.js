@@ -77,7 +77,7 @@ var routes = [
                 var clientData = {
                   email: payment_email,
                   payment: payment_newId,
-                  active = 1
+                  active: 1
                 };
                 app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
                   dbClientResponse = JSON.parse(dbClientResponse);
