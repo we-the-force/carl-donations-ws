@@ -47,9 +47,7 @@ var routes = [
           if(paymentData.charges.data[0].paid)
           {
             var payment_email = paymentData.charges.data[0].billing_details.email;
-            //var payment_client_name = paymentData.charges.data[0].billing_details.name;
-            //var payment_client_id = paymentData.charges.data[0].customer;
-
+            
             //--- Aqui ya tiene la info necesaria para dar de alta la informacion en la base de datos
             var paymentData = {
               status: 'confirmed',
