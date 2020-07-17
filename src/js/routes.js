@@ -91,7 +91,7 @@ var routes = [
                   license: license_newId
                 };
                 app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
-                  dbClientResponse = JSON.parse(dbClientRepsonse);
+                  dbClientResponse = JSON.parse(dbClientResponse);
                   console.log(dbClientResponse);
                 });
               });
