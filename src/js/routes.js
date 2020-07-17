@@ -48,8 +48,6 @@ var routes = [
 
           console.log("json " + paymentData);
           
-
-/*
           if(paymentData.charges.data[0].paid)
           {
             var payment_email = paymentData.charges.data[0].billing_details.email;
@@ -58,13 +56,12 @@ var routes = [
 
             console.log('email: ' +payment_email+ ' name ' + payment_client_name + ' id ' + payment_client_id);
             //--- Aqui ya tiene la info necesaria para dar de alta la informacion en la base de datos
-            var paymentData = JSON.stringify({
+            var paymentData = {
               status: 'confirmed',
               gateway_id: payment_intent
-            });
+            };
 
-            console.log('payment data ' + paymentData);
-            app.request.post(app.data.api+'/items/payments', JSON.stringify({status: 'confirmed', gateway_id: payment_intent}), 
+            app.request.post(app.data.api+'/items/payments', paymentData, 
             function(error, dbPaymentResponse, body) {
               console.log(error);
               console.log(dbPaymentResponse);
@@ -75,27 +72,27 @@ var routes = [
               var serial_licence = Math.floor(new Date() / 1000);
               console.log('Serial_Licence: ' + serial_licence);
 
-              var licenceData = JSON.stringify({
+              var licenceData = {
                 active: true,
                 serial: serial_licence
-              });
+              };
 
               app.request.post(app.data.api+'/items/licences', licenceData, function(dbLicenceResponse) {
                 //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
                 console.log(dbLicenceResponse);
                 var licence_newId = dbLicenceResponse.data[0].id;
 
-                var clientData = JSON.stringify({
+                var clientData = {
                   email: payment_email,
                   payment: payment_newId,
                   licence: licence_newId
-                });
+                };
                 app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
                   console.log(dbClientResponse);
                 });
               });
             });
-          }*/
+          }
 
           resolve(
             // How and what to load: template
