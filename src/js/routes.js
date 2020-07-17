@@ -80,8 +80,9 @@ var routes = [
 
               app.request.post(app.data.api+'/items/licences', licenceData, function(dbLicenceResponse) {
                 //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
+                dbLicenceResponse = JSON.parse(dbLicenceResponse);
                 console.log(dbLicenceResponse);
-                var licence_newId = dbLicenceResponse.data[0].id;
+                var licence_newId = dbLicenceResponse.data.id;
 
                 var clientData = {
                   email: payment_email,
@@ -89,6 +90,7 @@ var routes = [
                   licence: licence_newId
                 };
                 app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
+                  dbClientResponse = JSON.parse(dbClientRepsonse);
                   console.log(dbClientResponse);
                 });
               });
