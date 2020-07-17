@@ -142,9 +142,9 @@ export default {
 
       var stripeurl = app.data.stripeUrl;
       console.log(page.route.context);
-      console.log('intento 1.06');
-      
-      app.request.post(app.data.api+'/items/licenses', JSON.stringify({id: '3', serial: '1321231'}), 
+      console.log('intento 1.08');
+      //JSON.stringify(
+      app.request.post(app.data.api+'/items/payments', {status: 'confirmed', gateway_id: '123dsd1123123'}, 
             function(error, dbPaymentResponse, body) {
       
               console.log(error);
