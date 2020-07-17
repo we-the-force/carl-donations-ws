@@ -73,8 +73,8 @@ var routes = [
               var serial_license = Math.floor(new Date() / 1000);
               console.log('Serial_Licence: ' + serial_license);
 
+              //                active: true,
               var licenseData = {
-                active: true,
                 serial: serial_license
               };
 
