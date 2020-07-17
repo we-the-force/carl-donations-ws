@@ -73,28 +73,31 @@ var routes = [
               var serial_license = Math.floor(new Date() / 1000);
               console.log('Serial_Licence: ' + serial_license);
 
-              //                active: true,
-              var licenseData = {
-                active: 1,
-                serial: serial_license
-              };
-
-              app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
-                //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
-                dbLicenseResponse = JSON.parse(dbLicenseResponse);
-                console.log(dbLicenseResponse);
-                var license_newId = dbLicenseResponse.data.id;
 
                 var clientData = {
                   email: payment_email,
                   payment: payment_newId,
-                  license: license_newId
+                  active = 1
                 };
                 app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
                   dbClientResponse = JSON.parse(dbClientResponse);
                   console.log(dbClientResponse);
+
+                  var clientId = dbClientResponse.data.id;
+
+                  var licenseData = {
+                    active: 1,
+                    serial: serial_license,
+                    owner: clientId
+                  };
+
+                  app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
+                    //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
+                    dbLicenseResponse = JSON.parse(dbLicenseResponse);
+                    console.log(dbLicenseResponse);
+                  });
+
                 });
-              });
             });
           }
 
