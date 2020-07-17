@@ -75,12 +75,13 @@ var routes = [
 
               //                active: true,
               var licenseData = {
+                active: 1,
                 serial: serial_license
               };
 
               app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
                 //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
-                dbLicenseResponse = JSON.parse(dbLisenceResponse);
+                dbLicenseResponse = JSON.parse(dbLisenseResponse);
                 console.log(dbLicenseResponse);
                 var license_newId = dbLicenseResponse.data.id;
 
