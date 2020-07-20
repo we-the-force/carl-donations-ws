@@ -103,7 +103,7 @@ var routes = [
                        }
                      };
    
-                     app.request.post(app.data.api+'/mail'. email_data, function(mail_response){
+                     app.request.post(app.data.api+'/mail', email_data, function(mail_response){
                        //--- aqui mostrar la cosa de que ya se envio el correo y asi
                        console.log("mail sent " );
                        console.log(mail_response);
