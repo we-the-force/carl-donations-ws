@@ -60,56 +60,56 @@ var routes = [
 
               var serial_license;
               app.methods.serialGen().then(function(res){
-                console.log(res);
                 serial_license = res;
-              });
 
-             /* 
-              var serial_license = Math.floor(new Date() / 1000);
-              console.log('Serial_Licence: ' + serial_license);*/
-
-              var licenseData = {
-                active: 1,
-                serial: serial_license
-              };
-
-              app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
-                //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
-                dbLicenseResponse = JSON.parse(dbLicenseResponse);
-                console.log(dbLicenseResponse);
-
-                var serial = dbLicenseResponse.data.serial;
-
-                var clientData = {
-                  email: payment_email,
-                  payment: payment_newId,
-                  license: serial,
-                  active: 1
-                };
-                app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
-                  dbClientResponse = JSON.parse(dbClientResponse);
-                  console.log(dbClientResponse);
-
-                  //--- ya se han generado todos los datos en la base de datos, ahora debe enviar el correo al usuario, y avisar en la pagina que ya esta todo OK
-                  var email_data = {
-                    "to": [
-                      payment_email
-                    ],
-                    "subject": "Carl & the Plague",
-                    "body": "Gracias por adquirir el juego de <b>Carl & the Plague</b><br><br>Para instalar su copia del juego, descarguelo en esta direccion <a href:'{{direccion}}'>{{direccion}}</a><br><br>su numero de serie es<br><br><b>{{serial}}</b>",
-                    "type": "html",
-                    "data": {
-                      "serial": serial_license,
-                      "direccion": "http://www.wetheforce.com/juego_descarga"
-                    }
-                  }
-
-                  app.request.post(app.data.api+'/mail'. email_data, function(mail_response){
-                    //--- aqui mostrar la cosa de que ya se envio el correo y asi
-                    console.log("mail sent");
-                  });
-
-                });
+                console.log(serial_license);
+                /* 
+                 var serial_license = Math.floor(new Date() / 1000);
+                 console.log('Serial_Licence: ' + serial_license);*/
+   
+                 var licenseData = {
+                   active: 1,
+                   serial: serial_license
+                 };
+   
+                 app.request.post(app.data.api+'/items/licenses', licenseData, function(dbLicenseResponse) {
+                   //--- finalmente armamos al cliente con los ids relacionados de licencia y pago
+                   dbLicenseResponse = JSON.parse(dbLicenseResponse);
+                   console.log(dbLicenseResponse);
+   
+                   var serial = dbLicenseResponse.data.serial;
+   
+                   var clientData = {
+                     email: payment_email,
+                     payment: payment_newId,
+                     license: serial,
+                     active: 1
+                   };
+                   app.request.post(app.data.api+'/items/clients', clientData, function(dbClientResponse){
+                     dbClientResponse = JSON.parse(dbClientResponse);
+                     console.log(dbClientResponse);
+   
+                     //--- ya se han generado todos los datos en la base de datos, ahora debe enviar el correo al usuario, y avisar en la pagina que ya esta todo OK
+                     var email_data = {
+                       "to": [
+                         payment_email
+                       ],
+                       "subject": "Carl & the Plague",
+                       "body": "Gracias por adquirir el juego de <b>Carl & the Plague</b><br><br>Para instalar su copia del juego, descarguelo en esta direccion <a href:'{{direccion}}'>{{direccion}}</a><br><br>su numero de serie es<br><br><b>{{serial}}</b>",
+                       "type": "html",
+                       "data": {
+                         "serial": serial_license,
+                         "direccion": "http://www.wetheforce.com/juego_descarga"
+                       }
+                     }
+   
+                     app.request.post(app.data.api+'/mail'. email_data, function(mail_response){
+                       //--- aqui mostrar la cosa de que ya se envio el correo y asi
+                       console.log("mail sent");
+                     });
+   
+                   });
+                 });
               });
             });
           }
