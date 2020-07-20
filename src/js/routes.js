@@ -103,7 +103,7 @@ var routes = [
 
                         app.request.setup({
                           headers: {
-                            'Authorization': 'Basic '+ auth_res_data.data.token,
+                            'Authorization': 'Bearer '+ auth_res_data.data.token,
                             'Content-Type': 'application/json',
                             'Cookie': 'PHPSESSID=f0a01d6cf9e627b8d08512a382351104'
                           }
