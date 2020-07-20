@@ -90,7 +90,7 @@ var routes = [
                      console.log(dbClientResponse);
    
                      //--- ya se han generado todos los datos en la base de datos, ahora debe enviar el correo al usuario, y avisar en la pagina que ya esta todo OK
-                     var email_data = {
+                     /*var email_data = {
                        "to": [
                          payment_email
                        ],
@@ -105,9 +105,10 @@ var routes = [
    
                      app.request.post(app.data.api+'/mail'. email_data, function(mail_response){
                        //--- aqui mostrar la cosa de que ya se envio el correo y asi
-                       console.log("mail sent");
+                       console.log("mail sent " );
+                       console.log(mail_response);
                      });
-   
+   */
                    });
                  });
               });
