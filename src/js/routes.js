@@ -97,8 +97,8 @@ var routes = [
                      };
 
                      app.request.post(app.data.api + '/auth/authenticate', auth_data, function(auth_res) {
-                        log.console('respuesta de authentification');
-                        log.console(auth_res);
+                        console.log('respuesta de authentification');
+                        console.log(auth_res);
 /*
                         var email_data = JSON.stringify({
                           "to": [
