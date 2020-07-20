@@ -90,23 +90,35 @@ var routes = [
                      console.log(dbClientResponse);
    
                      //--- ya se han generado todos los datos en la base de datos, ahora debe enviar el correo al usuario, y avisar en la pagina que ya esta todo OK
-                     var email_data = JSON.stringify({
-                       "to": [
-                         payment_email
-                       ],
-                       "subject": "Carl & the Plague",
-                       "body": "Gracias por adquirir el juego de <b>Carl & the Plague</b><br><br>Para instalar su copia del juego, descarguelo en esta direccion <a href:'{{direccion}}'>{{direccion}}</a><br><br>su numero de serie es<br><br><b>{{serial}}</b>",
-                       "type": "html",
-                       "data": {
-                         "serial": serial_license,
-                         "direccion": "http://www.wetheforce.com/juego_descarga"
-                       }
+
+                     var auth_data = JSON.stringify({
+                        "email" : "will@wetheforce.com",
+                        "password" : "p4r4n64r1"
                      });
-   
-                     app.request.post(app.data.api+'/mail', email_data, function(mail_response){
-                       //--- aqui mostrar la cosa de que ya se envio el correo y asi
-                       console.log("mail sent " );
-                       console.log(mail_response);
+
+                     app.request.post(app.data.api + 'auth/authenticate', auth_data, function(auth_res) {
+                        log.console('respuesta de authentification');
+                        log.console(auth_res);
+/*
+                        var email_data = JSON.stringify({
+                          "to": [
+                            payment_email
+                          ],
+                          "subject": "Carl & the Plague",
+                          "body": "Gracias por adquirir el juego de <b>Carl & the Plague</b><br><br>Para instalar su copia del juego, descarguelo en esta direccion <a href:'{{direccion}}'>{{direccion}}</a><br><br>su numero de serie es<br><br><b>{{serial}}</b>",
+                          "type": "html",
+                          "data": {
+                            "serial": serial_license,
+                            "direccion": "http://www.wetheforce.com/juego_descarga"
+                          }
+                        });
+      
+                        app.request.post(app.data.api+'/mail', email_data, function(mail_response){
+                          //--- aqui mostrar la cosa de que ya se envio el correo y asi
+                          console.log("mail sent " );
+                          console.log(mail_response);
+                        });                        
+*/
                      });
                    });
                  });
