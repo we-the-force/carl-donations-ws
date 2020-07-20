@@ -133,6 +133,9 @@ export default {
       var self = this;
       var app = self.$app;
       var stripe = Stripe(app.data.stripePK);
+      app.methods.serialGen().then(function(res){
+        console.log(res);
+      });
       app.request.setup({
         headers: {
           'Authorization': 'Bearer '+app.data.stripeSK,

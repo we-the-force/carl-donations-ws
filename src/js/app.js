@@ -37,15 +37,16 @@ var app = new Framework7({
 
     serialGen: async () => {
       'use strict';
-      var chars = '1234567890',
-          serialLength = 6,
-          randomSerial = "",
-          i,
-          randomNumber;
-      for (i = 0; i < serialLength; i = i + 1) {
-          randomNumber = Math.floor(Math.random() * chars.length);
-          randomSerial += chars.substring(randomNumber, randomNumber + 1);
-      }
+      var randomSerial = Math.round((new Date()).getTime() / 1000);
+      // var chars = '1234567890',
+      //     serialLength = 6,
+      //     randomSerial = "",
+      //     i,
+      //     randomNumber;
+      // for (i = 0; i < serialLength; i = i + 1) {
+      //     randomNumber = Math.floor(Math.random() * chars.length);
+      //     randomSerial += chars.substring(randomNumber, randomNumber + 1);
+      // }
       return randomSerial
     },
     isEmpty: async (obj) => {
