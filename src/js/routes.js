@@ -99,8 +99,16 @@ var routes = [
                      app.request.post(app.data.api + '/auth/authenticate', auth_data, function(auth_res) {
                         console.log('respuesta de authentification');
                         console.log(auth_res);
-/*
-                        var email_data = JSON.stringify({
+                        var auth_res_data = JSON.parse(auth_res);
+
+                        app.request.setup({
+                          headers: {
+                            'Authorization': 'Basic '+ auth_res_data.data.token,
+                            'Content-Type': 'application/json'
+                          }
+                        });
+
+                        var email_data = {
                           "to": [
                             payment_email
                           ],
@@ -111,14 +119,14 @@ var routes = [
                             "serial": serial_license,
                             "direccion": "http://www.wetheforce.com/juego_descarga"
                           }
-                        });
+                        };
       
                         app.request.post(app.data.api+'/mail', email_data, function(mail_response){
                           //--- aqui mostrar la cosa de que ya se envio el correo y asi
                           console.log("mail sent " );
                           console.log(mail_response);
                         });                        
-*/
+
                      });
                    });
                  });
