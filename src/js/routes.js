@@ -51,7 +51,7 @@ var routes = [
               payment_intent: paymentIntent
             };
 
-            app.request.post(app.data.api+'/items/payments', paymentData, function(dbPaymentResponse) {
+            app.request.post(app.data.api+'/items/payment_info', paymentData, function(dbPaymentResponse) {
               dbPaymentResponse = JSON.parse(dbPaymentResponse);
               console.log(dbPaymentResponse);
 
