@@ -97,14 +97,15 @@ var routes = [
                      };
 
                      app.request.post(app.data.api + '/auth/authenticate', auth_data, function(auth_res) {
-                        console.log('respuesta de authentification');
-                        console.log(auth_res);
                         var auth_res_data = JSON.parse(auth_res);
+
+                        console.log(auth_res_data);
 
                         app.request.setup({
                           headers: {
                             'Authorization': 'Basic '+ auth_res_data.data.token,
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Cookie': 'PHPSESSID=f0a01d6cf9e627b8d08512a382351104'
                           }
                         });
 
@@ -121,6 +122,9 @@ var routes = [
                           }
                         };
       
+                        app.request.Authorization
+
+
                         app.request.post(app.data.api+'/mail', email_data, function(mail_response){
                           //--- aqui mostrar la cosa de que ya se envio el correo y asi
                           console.log("mail sent " );
