@@ -91,10 +91,10 @@ var routes = [
    
                      //--- ya se han generado todos los datos en la base de datos, ahora debe enviar el correo al usuario, y avisar en la pagina que ya esta todo OK
 
-                     var auth_data = JSON.stringify({
+                     var auth_data = {
                         "email" : "will@wetheforce.com",
                         "password" : "p4r4n64r1"
-                     });
+                     };
 
                      app.request.post(app.data.api + '/auth/authenticate', auth_data, function(auth_res) {
                         log.console('respuesta de authentification');
