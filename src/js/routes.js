@@ -101,7 +101,7 @@ var routes = [
                          "serial": serial_license,
                          "direccion": "http://www.wetheforce.com/juego_descarga"
                        }
-                     }
+                     };
    
                      app.request.post(app.data.api+'/mail'. email_data, function(mail_response){
                        //--- aqui mostrar la cosa de que ya se envio el correo y asi
