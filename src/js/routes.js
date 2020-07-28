@@ -1,5 +1,6 @@
 
 import HomePage from '../pages/home.f7.html';
+import DownloadPage from '../pages/download.f7.html';
 import AboutPage from '../pages/about.f7.html';
 import FormPage from '../pages/form.f7.html';
 import RenewSerial from '../pages/renew.f7.html';
@@ -12,6 +13,10 @@ import NotFoundPage from '../pages/404.f7.html';
 //const stripe = require('stripe')('sk_test_51H4VvJCjecf2D9fjreTnLzKeeDOBF3oUkcWdXBRPHLkHaPHdGNMSdDJAhX7unCXd1hk20C8oDAipLuz6pxjKwX7s00hYju7MPA');
 
 var routes = [
+  {
+    path: '/download',
+    component: DownloadPage
+  },
  {
 
    path: '/payment/:sessionId',
@@ -117,7 +122,7 @@ var routes = [
                           "type": "html",
                           "data": {
                             "serial": serial_license,
-                            "direccion": "http://www.wetheforce.com/juego_descarga"
+                            "direccion": "https://carl.wetheforce.com/download"
                           }
                         };
       
