@@ -122,7 +122,7 @@ var routes = [
                           "type": "html",
                           "data": {
                             "serial": serial_license,
-                            "direccion": "https://carl.wetheforce.com/download"
+                            "direccion": "https://carl.wetheforce.com/#!/download"
                           }
                         };
       
@@ -133,6 +133,7 @@ var routes = [
                           //--- aqui mostrar la cosa de que ya se envio el correo y asi
                           console.log("mail sent " );
                           console.log(mail_response);
+                          app.dialog.alert('Te enviamos un correo con tu número de serie y el link de descarga.', 'Gracias!!!');
                         });                        
 
                      });
