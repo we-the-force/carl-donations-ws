@@ -118,11 +118,11 @@ var routes = [
                             payment_email
                           ],
                           "subject": "Carl & the Plague",
-                          "body": "Gracias por adquirir el juego de <b>Carl & the Plague</b><br><br>Para instalar su copia del juego, descarguelo en esta direccion <a href:'{{direccion}}'>{{direccion}}</a><br><br>su numero de serie es<br><br><b>{{serial}}</b>",
+                          "body": "Gracias por adquirir el juego de <b>Carl & the Plague</b><br><br>Para instalar su copia del juego, descarguelo en esta dirección -> <a href='{{direccion}}'>DESCARGAR</a><br><br>su numero de serie es<br><br><b>{{serial}}</b>",
                           "type": "html",
                           "data": {
                             "serial": serial_license,
-                            "direccion": "https://carl.wetheforce.com/#!/download"
+                            "direccion": "https://carl.wetheforcestudios.com/#!/download"
                           }
                         };
       
