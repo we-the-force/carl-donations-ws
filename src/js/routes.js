@@ -128,13 +128,14 @@ var routes = [
       
                         app.request.Authorization
 
-
                         app.request.post(app.data.api+'/mail', email_data, function(mail_response){
                           //--- aqui mostrar la cosa de que ya se envio el correo y asi
                           console.log("mail sent " );
                           console.log(mail_response);
                           app.dialog.alert('Te enviamos un correo con tu número de serie y el link de descarga.', 'Gracias!!!');
-                        });                        
+                        });     
+                        app.dialog.alert('Te enviamos un correo con tu número de serie y el link de descarga.', 'Gracias!!!');
+
 
                      });
                    });
