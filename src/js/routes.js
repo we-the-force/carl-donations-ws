@@ -134,7 +134,7 @@ var routes = [
                           console.log(mail_response);
                           app.dialog.alert('Te enviamos un correo con tu número de serie y el link de descarga.', 'Gracias!!!');
                         });     
-                        app.dialog.alert('Te enviamos un correo con tu número de serie y el link de descarga.', 'Gracias!!!');
+                        // app.dialog.alert('Te enviamos un correo con tu número de serie y el link de descarga.', 'Gracias!!!');
 
 
                      });
