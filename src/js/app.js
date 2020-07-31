@@ -24,8 +24,8 @@ var app = new Framework7({
   theme: 'auto', // Automatic theme detection
 
   data: {
-    stripeSK: 'sk_test_51H4x5VCP0DsjUpGaTlCjtB6jw6QVT6kuMkU4jtZRxDtHQfRJsNK0xHqduvqREY3NSXniQAFNU3Y8PsG1157BxgFW00iLWqJc6d',
-    stripePK: 'pk_test_51H4x5VCP0DsjUpGaLif7AFjALynzJW1WOqC2dOk4De92easSM9M8jyKXpupK8fiVJmozfkjUOlZNJIeJIhDC6JM0006gvLZr9n',
+    stripeSK: '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',
+    stripePK: 'pk_live_51H4x5VCP0DsjUpGa37ysCiD3dfy0I0I8QfsfbO3QPmtBCbJE9UftYLEfRsAxCtlxd1Jkl7cQ4me7EYZQ0n2T4knS0011yRH3t6',
     stripeTK: 'sk_test_4eC39HqLyjWDarjtT1zdp7dc',
     stripeUrl: 'https://api.stripe.com/v1/checkout/sessions',
     paymentUrl: 'https://api.stripe.com/v1/payment_intents',
